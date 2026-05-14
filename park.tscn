@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://rl1awi6acq0y"]
+
+[ext_resource type="Texture2D" uid="uid://dg72i51d1nn0o" path="res://grasslands_sunset_1k.exr" id="1_20hy8"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://proto_controller/proto_controller.tscn" id="1_lcr5t"]
+[ext_resource type="Texture2D" uid="uid://s1emf5tbnfgr" path="res://brown_mud_leaves_01_diff_1k.png" id="2_ew778"]
+[ext_resource type="Texture2D" uid="uid://dqioaaq2cd3ml" path="res://wood_shutter_diff_1k.png" id="3_ew778"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lcr5t"]
+panorama = ExtResource("1_20hy8")
+energy_multiplier = 0.55
+
+[sub_resource type="Sky" id="Sky_uktj1"]
+sky_material = SubResource("PanoramaSkyMaterial_lcr5t")
+
+[sub_resource type="Environment" id="Environment_di8ox"]
+background_mode = 2
+sky = SubResource("Sky_uktj1")
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baggn"]
+shading_mode = 2
+albedo_color = Color(0.43904847, 0.43904933, 0.43904895, 1)
+albedo_texture = ExtResource("2_ew778")
+uv1_scale = Vector3(0.404, 0.404, 0.435)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcr5t"]
+albedo_color = Color(0.581033, 0.58103293, 0.5810329, 1)
+albedo_texture = ExtResource("3_ew778")
+uv1_triplanar = true
+
+[node name="Park" type="Node3D" unique_id=1664110469]
+
+[node name="ProtoController" parent="." unique_id=1275918632 instance=ExtResource("1_lcr5t")]
+transform = Transform3D(1, 2.9802322e-08, 2.9802322e-08, -2.9802322e-08, 1, 0, -2.9802322e-08, -8.881784e-16, 1, -3.8146973e-06, 0.5000019, 7.6293945e-06)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1794712354]
+transform = Transform3D(-0.66967493, -0.47660357, -0.5695477, 0.43359292, -0.8735445, 0.22117224, -0.60293674, -0.09883833, 0.7916428, -41.5, 18.700006, 53.399994)
+light_color = Color(1, 0.87070113, 0.844939, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 70.0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1206961100]
+environment = SubResource("Environment_di8ox")
+
+[node name="ground" type="CSGBox3D" parent="." unique_id=1023167886]
+transform = Transform3D(1.7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+use_collision = true
+size = Vector3(64, 0.4, 130)
+material = SubResource("StandardMaterial3D_baggn")
+
+[node name="fence1" type="CSGBox3D" parent="." unique_id=1675784584]
+transform = Transform3D(2.75, 0, 0, 0, 1, 0, 0, 0, 3.7200003, -0.03905964, 1, 36.628403)
+use_collision = true
+size = Vector3(19.83, 1, 0.1)
+material = SubResource("StandardMaterial3D_lcr5t")
+
+[node name="fence2" type="CSGBox3D" parent="." unique_id=1798611645]
+transform = Transform3D(-1.6260638e-07, 0, -2.7499998, 0, 1, 0, 3.720001, 0, -1.2020631e-07, 27.227188, 0.99999994, 0.13520204)
+use_collision = true
+size = Vector3(19.7, 1, 0.1)
+material = SubResource("StandardMaterial3D_lcr5t")
+
+[node name="fence3" type="CSGBox3D" parent="." unique_id=2092173933]
+transform = Transform3D(4.878192e-07, 0, 2.7499993, 0, 1, 0, -3.7200012, 0, 3.6061883e-07, -27.195324, 0.9999999, -0.05081287)
+use_collision = true
+size = Vector3(19.7, 1, 0.1)
+material = SubResource("StandardMaterial3D_lcr5t")
+
+[node name="fence4" type="CSGBox3D" parent="." unique_id=1214728437]
+transform = Transform3D(-2.7500005, 0, 3.252127e-07, 0, 1, 0, -2.404127e-07, 0, -3.7199998, 0.0021834373, 0.9999999, -36.692806)
+use_collision = true
+size = Vector3(19.89, 1, 0.1)
+material = SubResource("StandardMaterial3D_lcr5t")
+
+[node name="truck-big" type="CSGBox3D" parent="." unique_id=1913995054]
+transform = Transform3D(0.94209164, 0, 2.146873, 0, 1.2, 0, -0.79050875, 0, 2.558544, 8.1, 1.1999999, -7.9)
+use_collision = true
+
+[node name="truck-big2" type="CSGBox3D" parent="." unique_id=1475474781]
+transform = Transform3D(1.2298131, 0, -1.1920929e-07, 0, 1.1999999, 0, 5.9604645e-08, 0, 3.3399413, 9, 1.1999999, 6.4)
+use_collision = true
+
+[node name="truck-big8" type="CSGBox3D" parent="." unique_id=979612132]
+transform = Transform3D(1.2298131, 0, -1.1920929e-07, 0, 1.1999999, 0, 5.9604645e-08, 0, 3.3399413, 9, 1.1999999, -2.2999997)
+use_collision = true
+
+[node name="truck-big3" type="CSGBox3D" parent="." unique_id=1611164482]
+transform = Transform3D(-1.1336148e-07, 0, -3.3399413, 0, 1.1999998, 0, 1.229813, 0, -2.6520274e-07, 6.3999996, 1.1999999, 8.900001)
+use_collision = true
+
+[node name="truck-big7" type="CSGBox3D" parent="." unique_id=817211125]
+transform = Transform3D(-1.2298129, 0, 4.111962e-07, 0, 1.1999997, 0, -1.6711829e-07, 0, -3.3399408, 5.499999, 1.1999999, -2.3999996)
+use_collision = true
+
+[node name="truck-big9" type="CSGBox3D" parent="." unique_id=493988724]
+transform = Transform3D(1.2298131, 0, -1.1920929e-07, 0, 1.1999999, 0, 5.9604645e-08, 0, 3.3399413, 9, 1.1999999, 2.1000004)
+use_collision = true
+
+[node name="truck-big10" type="CSGBox3D" parent="." unique_id=1106178493]
+transform = Transform3D(-1.2298129, 0, 4.111962e-07, 0, 1.1999997, 0, -1.6711829e-07, 0, -3.3399408, 5.499999, 1.1999999, 2.0000005)
+use_collision = true
+
+[node name="truck-big4" type="CSGBox3D" parent="." unique_id=1575629773]
+transform = Transform3D(-0.94209146, 0, -2.146873, 0, 1.1999999, 0, 0.7905087, 0, -2.5585434, -8.033333, 1.1999999, 7.933334)
+use_collision = true
+
+[node name="truck-big5" type="CSGBox3D" parent="." unique_id=1545267026]
+transform = Transform3D(-1.2298131, 0, -1.7277765e-07, 0, 1.1999998, 0, 4.7909015e-08, 0, -3.339941, -8.933333, 1.1999999, -6.3666663)
+use_collision = true
+
+[node name="truck-big6" type="CSGBox3D" parent="." unique_id=1103660758]
+transform = Transform3D(5.8478236e-09, 0, 3.339941, 0, 1.1999997, 0, -1.2298129, 0, -2.6784193e-08, -6.3333335, 1.1999999, -8.866667)
+use_collision = true
